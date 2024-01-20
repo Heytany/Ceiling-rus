@@ -7,7 +7,7 @@ const router = useRouter()
 <template>
   <div>
     <button icon-btn @click="toggleDark()">
-      <div i-carbon-sun dark:i-carbon-moon />
+      <div class="icon-huge" sass-mod i-carbon-sun dark:i-carbon-moon />
     </button>
   </div>
   <RouterView />
@@ -20,3 +20,9 @@ const router = useRouter()
     </button>
   </div>
 </template>
+
+<style lang="sass">
+  [sass-mod].icon-huge
+    width: 65px
+    height: 65px
+</style>

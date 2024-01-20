@@ -20,6 +20,8 @@
 
 - 📑 [Layout system](./src/layouts)
 
+- 🍍 [State Management via Pinia](https://pinia.vuejs.org/)
+
 - 📦 [Components auto importing](./src/components)
 
 - 🎨 [UnoCSS](https://github.com/antfu/unocss) - The instant on-demand atomic CSS engine.

@@ -1,9 +1,10 @@
-<script setup lang="ts" generic="T extends any, O extends any">
+<script setup lang="ts">
 defineOptions({
   name: 'IndexPage',
 })
 
-const name = ref('')
+const user = useUserStore()
+const name = ref(user.savedName)
 
 const router = useRouter()
 function go() {

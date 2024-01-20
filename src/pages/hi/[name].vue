@@ -1,6 +1,12 @@
 <script setup lang="ts">
 const params = useRoute('/hi/[name]').params
 const router = useRouter()
+const route = useRoute('/hi/[name]')
+const user = useUserStore()
+
+watchEffect(() => {
+  user.setNewName(route.params.name)
+})
 </script>
 
 <template>
