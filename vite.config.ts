@@ -7,6 +7,7 @@ import UnoCSS from 'unocss/vite'
 import VueMacros from 'unplugin-vue-macros/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
+import Layouts from 'vite-plugin-vue-layouts'
 
 export default defineConfig({
   resolve: {
@@ -30,6 +31,9 @@ export default defineConfig({
 
     // https://github.com/posva/unplugin-vue-router
     VueRouter(),
+
+    // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
+    Layouts(),
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
