@@ -9,8 +9,7 @@
     "typecheck": "vue-tsc --noEmit",
     "preview": "vite preview",
     "test": "vitest",
-    "up": "taze major -I",
-    "postinstall": "npx simple-git-hooks"
+    "up": "taze major -I"
   },
   "dependencies": {
     "@vueuse/core": "^10.7.0",
@@ -32,7 +31,7 @@
     "jsdom": "^23.0.1",
     "lint-staged": "^15.2.0",
     "pnpm": "^8.11.0",
-    "simple-git-hooks": "^2.9.0",
+    "sass": "^1.70.0",
     "taze": "^0.13.0",
     "typescript": "^5.3.3",
     "unocss": "^0.58.0",
@@ -43,9 +42,6 @@
     "vite": "^5.0.6",
     "vitest": "^1.0.2",
     "vue-tsc": "^1.8.25"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
     "*": "eslint --fix"
