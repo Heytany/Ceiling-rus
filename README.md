@@ -18,6 +18,8 @@
 
 - 🗂 [File based routing](./src/pages)
 
+- 📑 [Layout system](./src/layouts)
+
 - 📦 [Components auto importing](./src/components)
 
 - 🎨 [UnoCSS](https://github.com/antfu/unocss) - The instant on-demand atomic CSS engine.
