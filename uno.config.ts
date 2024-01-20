@@ -21,8 +21,8 @@ export default defineConfig({
     presetWebFonts({
       fonts: {
         sans: 'Comfortaa',
-        //serif: 'DM Serif Display',
-        //mono: 'DM Mono',
+        //  serif: 'DM Serif Display',
+        //  mono: 'DM Mono',
       },
     }),
   ],
