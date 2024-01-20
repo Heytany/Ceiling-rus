@@ -5,15 +5,18 @@ const router = useRouter()
 </script>
 
 <template>
-  <main p="x4 y10" text="center teal-700 dark:gray-200">
-    <div text-4xl>
-      <div i-carbon-warning inline-block />
-    </div>
-    <RouterView />
-    <div>
-      <button text-sm btn m="3 t8" @click="router.back()">
-        Назад
-      </button>
-    </div>
-  </main>
+  <div>
+    <button icon-btn @click="toggleDark()">
+      <div i-carbon-sun dark:i-carbon-moon />
+    </button>
+  </div>
+  <RouterView />
+  <div>
+    <button btn-hex-262a37 text-sm btn m="3 t8" @click="router.push('/')">
+      Главная страница
+    </button>
+    <button text-sm btn m="3 t8" @click="router.back()">
+      Назад
+    </button>
+  </div>
 </template>
