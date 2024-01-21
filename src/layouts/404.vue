@@ -22,7 +22,7 @@ const router = useRouter()
 </template>
 
 <style lang="sass">
-  [sass-mod].icon-huge
-    width: 65px
-    height: 65px
+[sass-mod].icon-huge
+  width: 65px
+  height: 65px
 </style>

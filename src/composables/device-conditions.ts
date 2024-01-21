@@ -23,9 +23,9 @@ function useMedia(query: string) {
   return matches
 }
 
-const isDesktop = useMedia('(min-width: 1920px), screen')
+const isDesktop = useMedia('(min-width: 1365px), screen')
 
-const isNotebook = useMedia('(min-width: 1024px) and (max-width: 1919px)')
+const isNotebook = useMedia('(min-width: 1024px) and (max-width: 1364px)')
 
 const isTablet = useMedia('(min-width: 768px) and (max-width: 1023px)')
 

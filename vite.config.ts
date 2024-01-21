@@ -63,4 +63,13 @@ export default defineConfig({
     // see uno.config.ts for config
     UnoCSS(),
   ],
+  css: {
+    preprocessorOptions: {
+      sass: {
+        // example: additionalData: `@import "./src/design/styles/variables"`
+        variables: `@import "./src/styles/helpers/variables"`,
+        additionalData: `@import "./src/styles/helpers/mixins"`,
+      },
+    },
+  },
 })

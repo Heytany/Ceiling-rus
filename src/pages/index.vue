@@ -34,7 +34,7 @@ function go() {
       @keydown.enter="go"
     />
 
-    <div>
+    <div class="red">
       <button
         class="m-3 text-sm btn"
         :disabled="!name"
@@ -45,3 +45,9 @@ function go() {
     </div>
   </div>
 </template>
+
+<style lang="sass">
+@include mq-min('phone')
+  .red
+    background: $color-yellow
+</style>
