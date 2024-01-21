@@ -34,7 +34,7 @@ function go() {
       @keydown.enter="go"
     />
 
-    <div class="red">
+    <div >
       <button
         class="m-3 text-sm btn"
         :disabled="!name"
@@ -43,6 +43,7 @@ function go() {
         Go
       </button>
     </div>
+    <div class="red" />
   </div>
 </template>
 
@@ -50,4 +51,5 @@ function go() {
 @include mq-min('phone')
   .red
     background: $color-yellow
+    //min-height: 200vh
 </style>
