@@ -17,3 +17,7 @@ const router = createRouter({
 app.use(router)
 app.use(pinia)
 app.mount('#app')
+//  MVP version without backend here
+window.globalData = sampleData
+const userStore = useHeaderStore()
+userStore.initHeader(window.globalData.header)

@@ -5,6 +5,7 @@ const matches = ref(0)
 const isDesktop = ref(deviceConditions.isDesktop)
 const isNotebook = ref(deviceConditions.isNotebook)
 const isBurgerOpen = ref(false)
+const header = useHeaderStore()
 
 function hideBurger(event: any): void {
   const { target } = event
@@ -24,18 +25,11 @@ switch (currentRoute) {
 <template>
   <header class="header" :class="{ 'dark-header': isDark }">
     <div v-if="isDesktop || isNotebook" class="header-wrapper">
-      <img class="header-icon" src="/favicon.svg" alt="Логотип Ceiling.rus" @click="router.push('/')">
+      <img class="header-icon" src="/favicon.svg" alt="Логотип Ceiling.rus" @click="router.push(header.logoRoute)">
       <nav>
         <ul class="header-menu">
-          <li :class="{ active: matches === 1 }">
-            Главная
-          </li>
-          <li>О компании</li>
-          <li>Услуги</li>
-          <li>Наши работы</li>
-          <li>Контакты</li>
-          <li class="important">
-            Заказать звонок
+          <li v-for="item in header.items" :key="`${item.id}menu`" :class="[{ active: matches === item.id }, { important: item.isImportant }]">
+            {{ item.name }}
           </li>
         </ul>
       </nav>
@@ -44,12 +38,12 @@ switch (currentRoute) {
           <div i-carbon-sun dark:i-carbon-moon />
         </button>
 
-        <a i-basil-vk-solid icon-btn target="_blank" href="https://vk.com/heytan" />
+        <a i-basil-vk-solid icon-btn target="_blank" :href="header.vkHref" />
 
-        <a href="tel:+89060330556">
+        <a :href="header.phoneFormatted">
           <span i-carbon-phone-filled flex-inline icon-btn />
           <span>
-            8 (906) 033-05-56
+            {{ header.phone }}
           </span></a>
       </address>
     </div>
@@ -64,17 +58,10 @@ switch (currentRoute) {
               <span />
               <div id="menu" @click="hideBurger($event)">
                 <div class="menu-content">
-                  <img class="header-icon" src="/favicon.svg" alt="Логотип Ceiling.rus" @click="router.push('/')">
+                  <img class="header-icon" src="/favicon.svg" alt="Логотип Ceiling.rus" @click="router.push(header.logoRoute)">
                   <ul>
-                    <li :class="{ active: matches === 1 }">
-                      Главная
-                    </li>
-                    <li>О компании</li>
-                    <li>Услуги</li>
-                    <li>Наши работы</li>
-                    <li>Контакты</li>
-                    <li class="important">
-                      Заказать звонок
+                    <li v-for="item in header.items" :key="`${item.id}menu`">
+                      {{ item.name }}
                     </li>
                   </ul>
                 </div>
@@ -83,7 +70,7 @@ switch (currentRoute) {
           </nav>
         </div>
       </div>
-      <img class="header-icon" src="/favicon.svg" alt="Логотип Ceiling.rus" @click="router.push('/')">
+      <img class="header-icon" src="/favicon.svg" alt="Логотип Ceiling.rus" @click="router.push(header.logoRoute)">
       <button icon-btn @click="toggleDark()">
         <div i-carbon-sun dark:i-carbon-moon />
       </button>
