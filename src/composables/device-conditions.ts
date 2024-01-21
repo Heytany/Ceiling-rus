@@ -23,11 +23,11 @@ function useMedia(query: string) {
   return matches
 }
 
-const isDesktop = useMedia('(min-width: 1365px), screen')
+const isDesktop = useMedia('(min-width: 1600px)')
 
-const isNotebook = useMedia('(min-width: 1024px) and (max-width: 1364px)')
+const isNotebook = useMedia('(min-width: 1300px) and (max-width: 1599px)')
 
-const isTablet = useMedia('(min-width: 768px) and (max-width: 1023px)')
+const isTablet = useMedia('(min-width: 768px) and (max-width: 1299px)')
 
 const isMobile = useMedia('(min-width: 0) and (max-width: 767px)')
 
