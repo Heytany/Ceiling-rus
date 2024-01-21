@@ -22,6 +22,7 @@
         title="GitHub"
       />
     </nav>
+    {{ deviceConditions }}
   </header>
 </template>
 
