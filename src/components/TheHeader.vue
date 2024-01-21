@@ -144,11 +144,6 @@ switch (currentRoute) {
         span
           font-style: normal
 
-  .dark-header
-    .header-menu
-      .active:not(.important), li:not(.important):hover, li:not(.important):active
-          border-bottom-color: $color-white
-
 //Mobile Part
 .header-wrapper-mobile
   display: flex
@@ -188,7 +183,7 @@ switch (currentRoute) {
       height: 2px
       margin-bottom: 5px
       position: relative
-      background: #ffffff
+      background: $color-default
       border-radius: 3px
       z-index: 1
       transform-origin: 5px 0px
@@ -241,4 +236,14 @@ switch (currentRoute) {
           padding: 10px 0
           transition-delay: 2s
           color: $color-default
+
+.dark-header
+  .header-menu
+    .active:not(.important), li:not(.important):hover, li:not(.important):active
+        border-bottom-color: $color-white
+
+  .burger
+    #menuToggle
+      span
+        background: $color-white
 </style>
