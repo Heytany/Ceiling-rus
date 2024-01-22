@@ -19,5 +19,5 @@ app.use(pinia)
 app.mount('#app')
 //  MVP version without backend here
 window.globalData = sampleData
-const userStore = useMasterPageStore()
-userStore.initHeader(window.globalData.header)
+useMasterPageStore().initMasterPage(window.globalData.masterPage)
+useMainPageStore().initMainPage(window.globalData.mainPage)

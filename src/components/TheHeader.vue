@@ -89,6 +89,11 @@ switch (currentRoute) {
 <style lang="sass">
 //Desktop part
 .header
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  z-index: 10
   padding: 16px 32px 0 16px
   max-width: 1920px
   margin: 0 auto

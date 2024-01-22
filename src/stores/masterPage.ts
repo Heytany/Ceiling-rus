@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useMasterPageStore = defineStore('header', () => {
+export const useMasterPageStore = defineStore('master-page', () => {
   const logoRoute = ref('')
   const vkHref = ref('')
   const phone = ref('')
@@ -10,7 +10,7 @@ export const useMasterPageStore = defineStore('header', () => {
   const phoneFormatted = ref('')
   const items = ref(new Array<HeaderMenuItem>())
 
-  function initHeader(this: any, dataObj: MasterPage) {
+  function initMasterPage(this: any, dataObj: MasterPage) {
     for (const key in dataObj) {
       const currentVal = dataObj[key as keyof MasterPage]
       this[key] = currentVal
@@ -18,7 +18,7 @@ export const useMasterPageStore = defineStore('header', () => {
   }
 
   return {
-    initHeader,
+    initMasterPage,
     items,
     logoRoute,
     vkHref,

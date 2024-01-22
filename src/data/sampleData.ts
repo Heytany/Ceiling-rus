@@ -22,13 +22,32 @@ declare global {
     copyright: string
   }
 
+  interface MainPage {
+    banner: Banner
+  }
+
+  interface ImgContainer {
+    src: string
+    srcOpt: string
+    srcMobile: string
+    srcMobileOpt: string
+  }
+
+  interface Banner {
+    isText: boolean
+    title: string
+    subtitle: string
+    img: ImgContainer
+  }
+
   interface SampleData {
-    header: MasterPage
+    masterPage: MasterPage
+    mainPage: MainPage
   }
 }
 
 export default {
-  header: {
+  masterPage: {
     logoRoute: '/',
     vkHref: 'https://vk.com/ceilingrus',
     phone: '8 (906) 033-05-56',
@@ -74,5 +93,19 @@ export default {
         isImportant: true,
       },
     ],
+  },
+
+  mainPage: {
+    banner: {
+      isText: true,
+      title: 'Натяжные потолки любой сложности',
+      subtitle: 'Работаем по индивидуальным проектам, с разработкой уникальных дизайнов в Дубне, Дмитрове, Кимрах',
+      img: {
+        src: '/main/banner.jpg',
+        srcOpt: '/main/banner.webp',
+        srcMobile: '/main/banner-mobile.jpg',
+        srcMobileOpt: '/main/banner-mobile.webp',
+      },
+    },
   },
 }
