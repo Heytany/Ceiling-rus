@@ -6,6 +6,26 @@ const isDesktop = ref(deviceConditions.isDesktop)
 const isNotebook = ref(deviceConditions.isNotebook)
 const isBurgerOpen = ref(false)
 const header = useMasterPageStore()
+const isLocked = useScrollLock(document)
+isLocked.value = true
+isLocked.value = false
+const scroll = ref(0)
+
+function doScroll() {
+  scroll.value = scrollY
+}
+
+watch(isBurgerOpen, async (val: boolean) => {
+  isLocked.value = val
+})
+
+onMounted(() => {
+  document.addEventListener('scroll', doScroll)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('scroll', doScroll)
+})
 
 function hideBurger(event: any): void {
   const { target } = event
@@ -23,7 +43,7 @@ switch (currentRoute) {
 </script>
 
 <template>
-  <header class="header" :class="{ 'dark-header': isDark }">
+  <header class="header" :class="[{ 'dark-header': isDark }, { 'fixed-header': scroll > 0 }]">
     <div v-if="isDesktop || isNotebook" class="header-wrapper">
       <img class="header-icon" src="/favicon.svg" alt="Логотип Ceiling.rus" @click="router.push(header.logoRoute)">
       <nav>
@@ -132,7 +152,6 @@ switch (currentRoute) {
       gap: 35px
 
       .active:not(.important), li:not(.important):hover, li:not(.important):active
-        @include transition()
         cursor: pointer
         padding-bottom: 1px
         border-bottom: 1px solid $color-default
@@ -280,4 +299,12 @@ switch (currentRoute) {
 
       input:checked ~ .burger-separator
         background: $color-white
+
+.fixed-header
+  position: fixed
+  left: 0
+  top: 0
+  right: 0
+  z-index: 10
+  backdrop-filter: invert(30%)
 </style>
