@@ -32,3 +32,16 @@
 @mixin transition($property: all, $duration: $transition-duration, $function: ease)
   transition: $property $duration $function
 
+
+/* Default container */
+.container
+  $container-padding-desc : 32px
+  $container-padding : 16px
+  margin: 0 auto
+  max-width: 1130px + $container-padding * 2
+  padding: 0 $container-padding
+  width: 100%
+
+  @include mq-min('notebook')
+    max-width: 1130px + $container-padding-desc * 2
+    padding: 0 $container-padding-desc

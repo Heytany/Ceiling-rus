@@ -40,8 +40,8 @@ switch (currentRoute) {
 
         <a i-basil-vk-solid icon-btn target="_blank" :href="header.vkHref" />
 
-        <a :href="header.phoneFormatted">
-          <span i-carbon-phone-filled flex-inline icon-btn />
+        <a :href="header.phoneFormatted" class="group">
+          <span class="group-hover:bg-hex-FFCA00" i-carbon-phone-filled flex-inline icon-btn />
           <span>
             {{ header.phone }}
           </span></a>
