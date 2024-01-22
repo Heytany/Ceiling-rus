@@ -53,17 +53,25 @@ switch (currentRoute) {
           <nav role="navigation">
             <div id="menuToggle">
               <input v-model="isBurgerOpen" type="checkbox">
-              <span />
-              <span />
-              <span />
+              <span class="burger-separator" />
+              <span class="burger-separator" />
+              <span class="burger-separator" />
               <div id="menu" @click="hideBurger($event)">
                 <div class="menu-content">
-                  <img class="header-icon" src="/favicon.svg" alt="Логотип Ceiling.rus" @click="router.push(header.logoRoute)">
                   <ul>
                     <li v-for="item in header.items" :key="`${item.id}menu`">
                       {{ item.name }}
                     </li>
                   </ul>
+                  <address>
+                    <a i-basil-vk-solid icon-btn target="_blank" :href="header.vkHref" />
+
+                    <a :href="header.phoneFormatted">
+                      <span i-carbon-phone-filled flex-inline icon-btn />
+                      <span>
+                        {{ header.phone }}
+                      </span></a>
+                  </address>
                 </div>
               </div>
             </div>
@@ -177,7 +185,7 @@ switch (currentRoute) {
       opacity: 0
       z-index: 2
 
-    span
+    .burger-separator
       display: flex
       width: 29px
       height: 2px
@@ -194,16 +202,16 @@ switch (currentRoute) {
       &:nth-last-child(2)
         transform-origin: 0% 100%
 
-    input:checked ~ span
+    input:checked ~ .burger-separator
       opacity: 1
       transform: rotate(45deg) translate(-3px, -1px)
-      background: #36383F
+      background: $color-default
 
-    input:checked ~ span:nth-last-child(3)
+    input:checked ~ .burger-separator:nth-last-child(3)
       opacity: 0
       transform: rotate(0deg) scale(0.2, 0.2)
 
-    input:checked ~ span:nth-last-child(2)
+    input:checked ~ .burger-separator:nth-last-child(2)
       transform: rotate(-45deg) translate(0, -1px)
 
     input:checked ~ #menu
@@ -225,17 +233,31 @@ switch (currentRoute) {
       max-width: 70vw
       box-shadow: 0 0 10px #85888C
       padding: 50px
-      padding-top: 75px
-      background-color: #F5F6FA
+      padding-top: 85px
+      background-color: $color-white
       -webkit-font-smoothing: antialiased
+      color: $color-default
+      border-radius: 0 20px 20px 0
 
       ul
-        margin-top: 10px
+        margin-bottom: 10px
 
         li
           padding: 10px 0
           transition-delay: 2s
-          color: $color-default
+
+      address
+        display: flex
+        align-items: center
+        justify-content: space-between
+        gap: 30px
+
+        a
+          display: flex
+          align-items: center
+          gap: 10px
+          span
+            font-style: normal
 
 .dark-header
   .header-menu
@@ -244,6 +266,13 @@ switch (currentRoute) {
 
   .burger
     #menuToggle
-      span
+      .burger-separator
+        background: $color-white
+
+      .menu-content
+        background: $color-default
+        color: $color-white
+
+      input:checked ~ .burger-separator
         background: $color-white
 </style>
