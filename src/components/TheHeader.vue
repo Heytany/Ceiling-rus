@@ -5,7 +5,7 @@ const matches = ref(0)
 const isDesktop = ref(deviceConditions.isDesktop)
 const isNotebook = ref(deviceConditions.isNotebook)
 const isBurgerOpen = ref(false)
-const header = useHeaderStore()
+const header = useMasterPageStore()
 
 function hideBurger(event: any): void {
   const { target } = event
