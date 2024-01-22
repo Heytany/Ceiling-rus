@@ -20,7 +20,7 @@ const footer = useMasterPageStore()
             </span></a>
         </address>
         <div class="footer-img-wrap">
-          <img class="header-icon" src="/favicon.svg" alt="Логотип Ceiling.rus" @click="router.push(footer.logoRoute)">
+          <img class="header-icon" :src="isDark ? '/favicon.svg' : '/logo.png'" alt="Логотип Ceiling.rus" @click="router.push(footer.logoRoute)">
           <span>
             {{ footer.bottomText }}
           </span>
