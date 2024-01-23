@@ -139,11 +139,12 @@ switch (currentRoute) {
 
 @include mq-min('tablet')
   .header
-    padding: 32px 50px 0 32px
     font-size: 15px
     font-weight: 600
     line-height: 100%
 
+    &-bg
+      padding: 32px 50px 32px 32px
     &-wrapper
       display: flex
       align-items: center

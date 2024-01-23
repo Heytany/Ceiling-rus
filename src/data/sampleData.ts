@@ -25,6 +25,7 @@ declare global {
   interface MainPage {
     banner: Banner
     about: About
+    attendance: Attendance
   }
 
   interface ImgContainer {
@@ -47,6 +48,11 @@ declare global {
     subtitle: string
     firstImg: ImgContainer
     secondImg: ImgContainer
+  }
+
+  interface Attendance {
+    title: string
+    subtitle: string
   }
 
   interface SampleData {
@@ -132,6 +138,10 @@ export default {
         srcMobile: '/about/second-min-m.jpg',
         srcMobileOpt: '/about/second-min-m.webp',
       },
+    },
+    attendance: {
+      title: 'Услуги',
+      subtitle: 'При заказе натяжного потолка по индивидуальному заказу <br> светильники в подарок!',
     },
   },
 }

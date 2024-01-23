@@ -12,6 +12,9 @@
     "up": "taze major -I"
   },
   "dependencies": {
+    "@iconify-json/fontisto": "^1.1.8",
+    "@iconify-json/jam": "^1.1.8",
+    "@iconify-json/ph": "^1.1.10",
     "@vueuse/core": "^10.7.0",
     "pinia": "^2.1.7",
     "vue": "^3.3.10",
