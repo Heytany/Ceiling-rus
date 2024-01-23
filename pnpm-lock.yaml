@@ -5,15 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@iconify-json/fontisto':
-    specifier: ^1.1.8
-    version: 1.1.8
-  '@iconify-json/jam':
-    specifier: ^1.1.8
-    version: 1.1.8
-  '@iconify-json/ph':
-    specifier: ^1.1.10
-    version: 1.1.10
   '@vueuse/core':
     specifier: ^10.7.0
     version: 10.7.0(vue@3.3.10)
@@ -40,6 +31,15 @@ devDependencies:
   '@iconify-json/carbon':
     specifier: ^1.1.24
     version: 1.1.24
+  '@iconify-json/fontisto':
+    specifier: ^1.1.8
+    version: 1.1.8
+  '@iconify-json/jam':
+    specifier: ^1.1.8
+    version: 1.1.8
+  '@iconify-json/ph':
+    specifier: ^1.1.10
+    version: 1.1.10
   '@types/node':
     specifier: ^20.10.4
     version: 20.10.4
@@ -837,22 +837,23 @@ packages:
     resolution: {integrity: sha512-g5J2kISh/fErQLXrk3ZV5pD9gKr1lZPRQ+sWh3HygO7G2eIxxXP8UlnjxvvGjCCaK9ZD0uLmPFB2Bdd1a2QVng==}
     dependencies:
       '@iconify/types': 2.0.0
-    dev: false
+    dev: true
 
   /@iconify-json/jam@1.1.8:
     resolution: {integrity: sha512-tp0Oynd8n8/DNIDHIltNTl2vXpHN09V1KMEF6mf8w6Tgsq/KQFvUWY0whD4cTvpR6PE/gCXibFnUNzpQSYTZnQ==}
     dependencies:
       '@iconify/types': 2.0.0
-    dev: false
+    dev: true
 
   /@iconify-json/ph@1.1.10:
     resolution: {integrity: sha512-e7owJfx9BgnUVGXKk/243iFV4tHH1UiBDl5mWYkwKoPf4nN2rzPGdD7ISfvwr3SB25VvOteSC5DOVWxjs56Ywg==}
     dependencies:
       '@iconify/types': 2.0.0
-    dev: false
+    dev: true
 
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
+    dev: true
 
   /@iconify/utils@2.1.12:
     resolution: {integrity: sha512-7vf3Uk6H7TKX4QMs2gbg5KR1X9J0NJzKSRNWhMZ+PWN92l0t6Q3tj2ZxLDG07rC3ppWBtTtA4FPmkQphuEmdsg==}
