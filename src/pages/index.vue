@@ -7,11 +7,21 @@ const main = useMainPageStore()
 </script>
 
 <template>
-  <div>
+  <div class="index-page">
     <TheBanner :data-banner="main.banner" />
     <TheAbout :data-about="main.about" />
     <TheAttendance :data-attendance="main.attendance" />
     <TheGallery />
-    <div class="container" style="height: 100vh;" />
   </div>
 </template>
+
+<style lang="sass">
+.index-page
+  margin-bottom: 80px
+
+  @include mq-min('tablet')
+    margin-bottom: 100px
+
+  @include mq-min('notebook')
+    margin-bottom: 120px
+</style>
