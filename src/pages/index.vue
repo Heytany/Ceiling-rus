@@ -12,8 +12,6 @@ const main = useMainPageStore()
     <TheAbout :data-about="main.about" />
     <TheAttendance :data-attendance="main.attendance" />
     <TheGallery />
-    <div class="container" style="height: 100vh;"> 
-      d
-    </div>
+    <div class="container" style="height: 100vh;" />
   </div>
 </template>
