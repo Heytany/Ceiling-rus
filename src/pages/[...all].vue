@@ -1,6 +1,6 @@
 <template>
   <div class="error-404">
-    <object class="svg-cat" v-if="isDark" type="image/svg+xml" data="https://cdn.svgator.com/images/2022/01/404-svg-animation.svg" alt="Kitty Yarn Play 404 SVG animation example" img="" width="100%" />
+    <object v-if="isDark" class="svg-cat" type="image/svg+xml" data="https://cdn.svgator.com/images/2022/01/404-svg-animation.svg" alt="Kitty Yarn Play 404 SVG animation example" img="" width="100%" />
     <img v-else src="/404/404.gif" alt="404 animation">
   </div>
 </template>

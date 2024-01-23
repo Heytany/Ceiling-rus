@@ -24,6 +24,7 @@ declare global {
 
   interface MainPage {
     banner: Banner
+    about: About
   }
 
   interface ImgContainer {
@@ -38,6 +39,14 @@ declare global {
     title: string
     subtitle: string
     img: ImgContainer
+  }
+
+  interface About {
+    isButton: boolean
+    title: string
+    subtitle: string
+    firstImg: ImgContainer
+    secondImg: ImgContainer
   }
 
   interface SampleData {
@@ -105,6 +114,23 @@ export default {
         srcOpt: '/main/banner.webp',
         srcMobile: '/main/banner-mobile.jpg',
         srcMobileOpt: '/main/banner-mobile.webp',
+      },
+    },
+    about: {
+      isButton: true,
+      title: 'О компании',
+      subtitle: '«Ceiling.rus» – компания, которая специализируется на ремонтно-строительных работах, а именно монтажом натяжных полотен в городах Дубна, Кимры, а также Дмитров. Успешно работаем на рынке более 15 лет. За эти десятилетия в компании сформировалась уютная атмосфера, стабилизировались цены и при этом улучшилось качество материалов, которые никак не вредят вашему драгоценному здоровью.',
+      firstImg: {
+        src: '/about/first-min.jpg',
+        srcOpt: '/about/first-min.webp',
+        srcMobile: '/about/first-min.jpg',
+        srcMobileOpt: '/about/first-min.webp',
+      },
+      secondImg: {
+        src: '/about/second-min.jpg',
+        srcOpt: '/about/second-min.webp',
+        srcMobile: '/about/second-min.jpg',
+        srcMobileOpt: '/about/second-min.webp',
       },
     },
   },

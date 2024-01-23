@@ -9,6 +9,7 @@ const main = useMainPageStore()
 <template>
   <div>
     <TheBanner :data-banner="main.banner" />
-    <div style="height: 100vh;"></div>
+    <TheAbout :data-about="main.about" />
+    <div style="height: 100vh;" />
   </div>
 </template>

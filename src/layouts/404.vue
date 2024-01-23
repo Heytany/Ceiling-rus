@@ -6,7 +6,7 @@ const router = useRouter()
   <div class="error-layout">
     <div>
       <button icon-btn @click="toggleDark()">
-        <div class="icon-huge" sass-mod i-carbon-sun dark:i-carbon-moon />
+        <div class="icon-huge" i-carbon-sun dark:i-carbon-moon sass-mod />
       </button>
     </div>
     <RouterView />

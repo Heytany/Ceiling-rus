@@ -22,3 +22,31 @@ footer
   margin-top: auto
 
 
+.h1-c
+  font-size: 15px
+  font-weight: 700
+  line-height: 18px
+
+  @include mq-min('phone')
+    font-size: 20px
+    line-height: 32px
+
+  @include mq-min('tablet')
+    font-size: 38px
+    line-height: 44px
+
+.subtitle-c
+  font-size: 13px
+  font-weight: 400
+  line-height: 18px
+
+  @include mq-min('tablet')
+    font-size: 16px
+    line-height: 26px
+
+.hr-c
+  margin: 10px 0
+  max-width: 50px
+
+  @include mq-min('tablet')
+    margin: 25px 0

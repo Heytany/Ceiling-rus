@@ -1,7 +1,7 @@
 <template>
-  <TheHeader/>
+  <TheHeader />
   <main>
     <RouterView />
   </main>
-  <TheFooter/>
+  <TheFooter />
 </template>

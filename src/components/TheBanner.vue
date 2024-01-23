@@ -16,12 +16,16 @@ const banner = ref<any>(props.dataBanner)
     </picture>
     <div class="banner-container container">
       <div class="banner-text">
-        <h1>{{ banner.title }}</h1>
-        <hr>
-        <p>{{ banner.subtitle }}</p>
+        <h1 class="h1-c">
+          {{ banner.title }}
+        </h1>
+        <hr class="hr-c">
+        <p class="subtitle-c">
+          {{ banner.subtitle }}
+        </p>
         <button
           type="button"
-          class="btn"
+          class="subtitle-c btn"
         >
           Оставить заявку на расчёт →
         </button>
@@ -37,6 +41,7 @@ const banner = ref<any>(props.dataBanner)
   img
     min-height: 420px
     object-fit: cover
+
     @include mq('tablet')
       max-height: 700px
       width: 100%
@@ -45,6 +50,7 @@ const banner = ref<any>(props.dataBanner)
     left: 0
     bottom: 0
     right: 0
+
   &-text
     max-width: 585px
     width: 100%
@@ -62,37 +68,8 @@ const banner = ref<any>(props.dataBanner)
       &:not(:hover)
         color: $color-default
 
-    h1
-      font-size: 15px
-      font-weight: 700
-      line-height: 18px
-
-      @include mq-min('phone')
-        font-size: 20px
-        line-height: 32px
-
-      @include mq-min('tablet')
-        font-size: 38px
-        line-height: 44px
-
     hr
-      margin: 10px 0
-      max-width: 50px
       border-color: $color-default
-      @include mq-min('tablet')
-        margin: 25px 0
-
-    p
-      font-size: 13px
-      font-weight: 400
-      line-height: 18px
-      @include mq-min('tablet')
-        font-size: 16px
-        line-height: 26px
-
-    @include mq-min('tablet')
-      font-size: 13px
-      line-height: 21px
 
 .dark-banner
   .banner-text
