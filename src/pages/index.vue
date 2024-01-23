@@ -11,6 +11,7 @@ const main = useMainPageStore()
     <TheBanner :data-banner="main.banner" />
     <TheAbout :data-about="main.about" />
     <TheAttendance :data-attendance="main.attendance" />
+    <TheGallery />
     <div class="container" style="height: 100vh;">
     </div>
   </div>

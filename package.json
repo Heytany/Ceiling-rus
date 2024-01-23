@@ -17,6 +17,7 @@
     "@iconify-json/ph": "^1.1.10",
     "@vueuse/core": "^10.7.0",
     "pinia": "^2.1.7",
+    "swiper": "^11.0.5",
     "vue": "^3.3.10",
     "vue-router": "^4.2.5"
   },
