@@ -123,14 +123,14 @@ export default {
       firstImg: {
         src: '/about/first-min.jpg',
         srcOpt: '/about/first-min.webp',
-        srcMobile: '/about/first-min.jpg',
-        srcMobileOpt: '/about/first-min.webp',
+        srcMobile: '/about/first-min-m.jpg',
+        srcMobileOpt: '/about/first-min-m.webp',
       },
       secondImg: {
         src: '/about/second-min.jpg',
         srcOpt: '/about/second-min.webp',
-        srcMobile: '/about/second-min.jpg',
-        srcMobileOpt: '/about/second-min.webp',
+        srcMobile: '/about/second-min-m.jpg',
+        srcMobileOpt: '/about/second-min-m.webp',
       },
     },
   },
