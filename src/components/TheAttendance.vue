@@ -10,9 +10,9 @@ const attendance = ref<any>(props.dataAttendance)
   <div class="container">
     <div class="attendance" :class="{ 'dark-attendance': isDark }">
       <div class="attendance-text">
-        <h1 class="h1-c">
+        <h2 class="h1-c">
           {{ attendance.title }}
-        </h1>
+        </h2>
         <p class="suntitle-c" v-html="attendance.subtitle" />
         <button
           v-if="attendance.isButton"
@@ -113,7 +113,7 @@ const attendance = ref<any>(props.dataAttendance)
     @include mq-min('notebook')
       margin-bottom: 35px
 
-    h1
+    h2
       margin-bottom: 20px
 
 .dark-attendance

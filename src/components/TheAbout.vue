@@ -20,9 +20,9 @@ const isNotebook = ref(deviceConditions.isNotebook)
         </picture>
       </div>
       <div class="about-text">
-        <h1 class="h1-c">
+        <h2 class="h1-c">
           {{ about.title }}
-        </h1>
+        </h2>
         <hr class="hr-c">
         <p class="suntitle-c">
           {{ about.subtitle }}
