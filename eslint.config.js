@@ -36,5 +36,11 @@ export default antfu(
         singleAttributePerLine: false,
       },
     },
+    rules: {
+      'no-unused-vars': ['warn', {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+      }],
+    },
   },
 )

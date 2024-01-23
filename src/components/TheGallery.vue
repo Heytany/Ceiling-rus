@@ -2,15 +2,22 @@
 import Swiper from 'swiper/bundle'
 import 'swiper/css'
 
+let swiper: any = null
+
+let _swiper2: any = null
+
+const mySwiper = ref<any>()
+const mySwiper2 = ref<any>()
+
 onMounted(() => {
-  const swiper = new Swiper('.mySwiper', {
+  swiper = new Swiper(mySwiper.value, {
     loop: true,
     spaceBetween: 10,
     slidesPerView: 4,
     freeMode: true,
     watchSlidesProgress: true,
   })
-  const swiper2 = new Swiper('.mySwiper2', {
+  _swiper2 = new Swiper(mySwiper2.value, {
     loop: true,
     spaceBetween: 10,
     navigation: {
@@ -26,7 +33,7 @@ onMounted(() => {
 
 <template>
   <div class="container">
-    <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+    <div ref="mySwiper2" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" :class="{ ok: _swiper2 }" class="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <img src="https://swiperjs.com/demos/images/nature-1.jpg">
@@ -62,7 +69,9 @@ onMounted(() => {
       <div class="swiper-button-next" />
       <div class="swiper-button-prev" />
     </div>
-    <div thumbsSlider="" class="swiper mySwiper">
+    <br>
+    <br>
+    <div ref="mySwiper" thumbsSlider="" class="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <img src="https://swiperjs.com/demos/images/nature-1.jpg">
@@ -114,13 +123,13 @@ onMounted(() => {
   display: block
   width: 100%
   height: 100%
+  max-height: 300px
   object-fit: cover
 body
   background: #000
   color: #000
 .swiper
   width: 100%
-  height: 300px
   margin-left: auto
   margin-right: auto
 .swiper-slide
