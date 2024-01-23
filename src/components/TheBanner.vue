@@ -7,7 +7,7 @@ const banner = ref<any>(props.dataBanner)
 </script>
 
 <template>
-  <div class="banner">
+  <div class="banner" :class="{ 'dark-banner': isDark }">
     <picture>
       <source :srcset="banner.img.srcMobileOpt" type="image/webp" media="(max-width: 1365px)">
       <source :srcset="banner.img.srcMobile" media="(max-width: 1365px)">
@@ -93,4 +93,11 @@ const banner = ref<any>(props.dataBanner)
     @include mq-min('tablet')
       font-size: 13px
       line-height: 21px
+
+.dark-banner
+  .banner-text
+    color: $color-white
+    background: $color-default
+    hr
+      border-color: $color-white
 </style>

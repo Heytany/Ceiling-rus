@@ -44,64 +44,66 @@ switch (currentRoute) {
 
 <template>
   <header class="header" :class="[{ 'dark-header': isDark }, { 'fixed-header': scroll > 0 }]">
-    <div v-if="isDesktop || isNotebook" class="header-wrapper">
-      <img class="header-icon" src="/favicon.svg" alt="Логотип Ceiling.rus" @click="router.push(header.logoRoute)">
-      <nav>
-        <ul class="header-menu">
-          <li v-for="item in header.items" :key="`${item.id}menu`" :class="[{ active: matches === item.id }, { important: item.isImportant }]">
-            {{ item.name }}
-          </li>
-        </ul>
-      </nav>
-      <address class="header-address">
+    <div class="header-bg">
+      <div v-if="isDesktop || isNotebook" class="header-wrapper">
+        <img class="header-icon" src="/favicon.svg" alt="Логотип Ceiling.rus" @click="router.push(header.logoRoute)">
+        <nav>
+          <ul class="header-menu">
+            <li v-for="item in header.items" :key="`${item.id}menu`" :class="[{ active: matches === item.id }, { important: item.isImportant }]">
+              {{ item.name }}
+            </li>
+          </ul>
+        </nav>
+        <address class="header-address">
+          <button icon-btn @click="toggleDark()">
+            <div i-carbon-sun dark:i-carbon-moon />
+          </button>
+
+          <a i-basil-vk-solid icon-btn target="_blank" :href="header.vkHref" />
+
+          <a :href="header.phoneFormatted" class="group">
+            <span class="group-hover:bg-hex-FFCA00" i-carbon-phone-filled flex-inline icon-btn />
+            <span>
+              {{ header.phone }}
+            </span></a>
+        </address>
+      </div>
+      <div v-if="!isDesktop && !isNotebook" class="header-wrapper-mobile">
+        <div class="burger">
+          <div class="burger-content">
+            <nav role="navigation">
+              <div id="menuToggle">
+                <input v-model="isBurgerOpen" type="checkbox">
+                <span class="burger-separator" />
+                <span class="burger-separator" />
+                <span class="burger-separator" />
+                <div id="menu" @click="hideBurger($event)">
+                  <div class="menu-content">
+                    <ul>
+                      <li v-for="item in header.items" :key="`${item.id}menu`">
+                        {{ item.name }}
+                      </li>
+                    </ul>
+                    <address>
+                      <a i-basil-vk-solid icon-btn target="_blank" :href="header.vkHref" />
+
+                      <a :href="header.phoneFormatted">
+                        <span i-carbon-phone-filled flex-inline icon-btn />
+                        <span>
+                          {{ header.phone }}
+                        </span></a>
+                    </address>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <img class="header-icon" src="/favicon.svg" alt="Логотип Ceiling.rus" @click="router.push(header.logoRoute)">
         <button icon-btn @click="toggleDark()">
           <div i-carbon-sun dark:i-carbon-moon />
         </button>
-
-        <a i-basil-vk-solid icon-btn target="_blank" :href="header.vkHref" />
-
-        <a :href="header.phoneFormatted" class="group">
-          <span class="group-hover:bg-hex-FFCA00" i-carbon-phone-filled flex-inline icon-btn />
-          <span>
-            {{ header.phone }}
-          </span></a>
-      </address>
-    </div>
-    <div v-if="!isDesktop && !isNotebook" class="header-wrapper-mobile">
-      <div class="burger">
-        <div class="burger-content">
-          <nav role="navigation">
-            <div id="menuToggle">
-              <input v-model="isBurgerOpen" type="checkbox">
-              <span class="burger-separator" />
-              <span class="burger-separator" />
-              <span class="burger-separator" />
-              <div id="menu" @click="hideBurger($event)">
-                <div class="menu-content">
-                  <ul>
-                    <li v-for="item in header.items" :key="`${item.id}menu`">
-                      {{ item.name }}
-                    </li>
-                  </ul>
-                  <address>
-                    <a i-basil-vk-solid icon-btn target="_blank" :href="header.vkHref" />
-
-                    <a :href="header.phoneFormatted">
-                      <span i-carbon-phone-filled flex-inline icon-btn />
-                      <span>
-                        {{ header.phone }}
-                      </span></a>
-                  </address>
-                </div>
-              </div>
-            </div>
-          </nav>
-        </div>
       </div>
-      <img class="header-icon" src="/favicon.svg" alt="Логотип Ceiling.rus" @click="router.push(header.logoRoute)">
-      <button icon-btn @click="toggleDark()">
-        <div i-carbon-sun dark:i-carbon-moon />
-      </button>
     </div>
   </header>
 </template>
@@ -114,10 +116,12 @@ switch (currentRoute) {
   left: 0
   right: 0
   z-index: 10
-  padding: 16px 32px 0 16px
-  max-width: 1920px
-  margin: 0 auto
-  width: 100%
+
+  &-bg
+    max-width: 1920px
+    margin: 0 auto
+    width: 100%
+    padding: 16px 32px 0 16px
 
   &-icon
     display: block
@@ -246,7 +250,7 @@ switch (currentRoute) {
     top: 0
     left: 0
     min-width: 100vw
-    height: 100vh
+    height: calc(var(--vh, 1vh) * 100)
     transform-origin: 0% 0%
     transform: translate(-100%, 0)
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0)
