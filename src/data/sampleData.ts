@@ -11,6 +11,11 @@ declare global {
     isImportant: boolean
   }
 
+  interface SliderItem {
+    img: string
+    imgZoom: string
+  }
+
   interface MasterPage {
     logoRoute: string
     phone: string
@@ -61,7 +66,7 @@ declare global {
     subtitle: string
     rowTitle: string
     rowSubtitle: string
-    items: Array<string>
+    items: Array<SliderItem>
   }
 
   interface SampleData {
@@ -158,16 +163,38 @@ export default {
       rowTitle: 'Светящееся полотно',
       rowSubtitle: 'Натяжной потолок со святящимся полотном можно сделать как цельным, где свет исходит от всей потолочной поверхности, так и виде светящегося окна - за счет вставки полупрозрачной пленки в основной потолок',
       items: [
-        'https://swiperjs.com/demos/images/nature-1.jpg',
-        'https://swiperjs.com/demos/images/nature-2.jpg',
-        'https://swiperjs.com/demos/images/nature-3.jpg',
-        'https://swiperjs.com/demos/images/nature-4.jpg',
-        'https://swiperjs.com/demos/images/nature-5.jpg',
-        'https://swiperjs.com/demos/images/nature-6.jpg',
-        'https://swiperjs.com/demos/images/nature-7.jpg',
-        'https://swiperjs.com/demos/images/nature-8.jpg',
-        'https://swiperjs.com/demos/images/nature-9.jpg',
-        'https://swiperjs.com/demos/images/nature-10.jpg',
+        {
+          img: '/main/slider/1-min.jpg',
+          imgZoom: '/main/slider/modal/1.jpg',
+        },
+        {
+          img: '/main/slider/2-min.jpg',
+          imgZoom: '/main/slider/modal/2.jpg',
+        },
+        {
+          img: '/main/slider/3-min.jpg',
+          imgZoom: '/main/slider/modal/3.jpg',
+        },
+        {
+          img: '/main/slider/4-min.jpg',
+          imgZoom: '/main/slider/modal/4.jpg',
+        },
+        {
+          img: '/main/slider/5-min.jpg',
+          imgZoom: '/main/slider/modal/5.jpg',
+        },
+        {
+          img: '/main/slider/6-min.jpg',
+          imgZoom: '/main/slider/modal/6.jpg',
+        },
+        {
+          img: '/main/slider/7-min.jpg',
+          imgZoom: '/main/slider/modal/7.jpg',
+        },
+        {
+          img: '/main/slider/8-min.jpg',
+          imgZoom: '/main/slider/modal/8.jpg',
+        },
       ],
     },
   },

@@ -85,8 +85,8 @@ onMounted(() => {
         </div>
         <div ref="mySwiper2" :class="{ ok: _swiper2 }" class="swiper">
           <div class="swiper-wrapper">
-            <div v-for="(item, index) in gallery.items" @click="openModal(item)" :key="`slider1${index}`" class="swiper-slide" loading="lazy">
-              <img :src="item">
+            <div v-for="(item, index) in gallery.items" :key="`slider1${index}`" class="swiper-slide" loading="lazy" @click="openModal(item.imgZoom)">
+              <img :src="item.img">
               <div class="swiper-lazy-preloader" />
             </div>
           </div>
@@ -96,7 +96,7 @@ onMounted(() => {
       <div ref="mySwiper" thumbsSlider="" class="swiper">
         <div class="swiper-wrapper">
           <div v-for="(item, index) in gallery.items" :key="`slider2${index}`" class="swiper-slide" loading="lazy">
-            <img :src="item">
+            <img :src="item.img">
             <div class="swiper-lazy-preloader" />
           </div>
         </div>
