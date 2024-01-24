@@ -8,6 +8,9 @@ dependencies:
   '@vueuse/core':
     specifier: ^10.7.0
     version: 10.7.0(vue@3.3.10)
+  '@zoom-image/vue':
+    specifier: ^0.2.4
+    version: 0.2.4(vue@3.3.10)
   pinia:
     specifier: ^2.1.7
     version: 2.1.7(typescript@5.3.3)(vue@3.3.10)
@@ -908,6 +911,10 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
+
+  /@namnode/store@0.1.0:
+    resolution: {integrity: sha512-4NGTldxKcmY0UuZ7OEkvCjs8ZEoeYB6M2UwMu74pdLiFMKxXbj9HdNk1Qn213bxX1O7bY5h+PLh5DZsTURZkYA==}
+    dev: false
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2308,6 +2315,21 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
+
+  /@zoom-image/core@0.32.1:
+    resolution: {integrity: sha512-R56D749Ck+/1yLWlEJ2FctxjdpTQEje3jPhOAbeEZGzLndIumskO42UqRNixcER6sAzCi01oYopmqnCpDElF0g==}
+    dependencies:
+      '@namnode/store': 0.1.0
+    dev: false
+
+  /@zoom-image/vue@0.2.4(vue@3.3.10):
+    resolution: {integrity: sha512-+l8ZyHp/q28U+9W7CZI+xZos75jTjb9HakTUlEEGPRwvDsyYGKoZKTB+pnRwMN4FFR5b2aMXrykCt6yvy+S3PA==}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      '@zoom-image/core': 0.32.1
+      vue: 3.3.10(typescript@5.3.3)
+    dev: false
 
   /abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
