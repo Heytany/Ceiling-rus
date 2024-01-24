@@ -11,9 +11,9 @@ const props = $defineProps<{
 }>()
 const gallery = ref<any>(props.dataGallery)
 const isModalOpened = ref(false)
-const sliderActive= ref('')
+const sliderActive = ref('')
 
-function openModal(val) {
+function openModal(val: string) {
   sliderActive.value = val
   isModalOpened.value = true
 }
@@ -21,7 +21,6 @@ function openModal(val) {
 function closeModal() {
   isModalOpened.value = false
 }
-
 
 onMounted(() => {
   swiper = new Swiper(mySwiper.value, {
@@ -111,7 +110,7 @@ onMounted(() => {
   max-width: 90vw
   max-height: calc(var(--vh, 1vh) * 90)
   width: 100%
-  
+
 .gallery
   padding: 50px 0 0 0
 
