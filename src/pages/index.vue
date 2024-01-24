@@ -12,7 +12,6 @@ const main = useMainPageStore()
     <TheAbout :data-about="main.about" />
     <TheAttendance :data-attendance="main.attendance" />
     <TheGallery :data-gallery="main.gallery"/>
-    <Test />
   </div>
 </template>
 

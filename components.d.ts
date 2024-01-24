@@ -20,5 +20,6 @@ declare module 'vue' {
     TheGallery: typeof import('./src/components/TheGallery.vue')['default']
     TheHeader: typeof import('./src/components/TheHeader.vue')['default']
     TheInput: typeof import('./src/components/TheInput.vue')['default']
+    Zoom: typeof import('./src/components/Zoom.vue')['default']
   }
 }

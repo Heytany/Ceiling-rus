@@ -55,7 +55,7 @@ onMounted(() => {
   <div class="container">
     <Modal :is-open="isModalOpened" name="first-modal" @modal-close="closeModal">
       <template #content>
-        <img class="popup-slider-zoom" :src="sliderActive">
+        <Zoom :src="sliderActive" />
       </template>
     </Modal>
     <div class="gallery" :class="{ 'dark-gallery': isDark }">
@@ -106,11 +106,6 @@ onMounted(() => {
 </template>
 
 <style lang="sass">
-.popup-slider-zoom
-  max-width: 90vw
-  max-height: calc(var(--vh, 1vh) * 90)
-  width: 100%
-
 .gallery
   padding: 50px 0 0 0
 
