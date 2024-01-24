@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Swiper from 'swiper/bundle'
-import 'swiper/css'
 
 let swiper: any = null
 let _swiper2: any = null
@@ -12,6 +11,7 @@ const props = $defineProps<{
 const gallery = ref<any>(props.dataGallery)
 const isModalOpened = ref(false)
 const sliderActive = ref('')
+const isPicLoaded = ref(false)
 
 function openModal(val: string) {
   sliderActive.value = val
@@ -20,6 +20,7 @@ function openModal(val: string) {
 
 function closeModal() {
   isModalOpened.value = false
+  isPicLoaded.value = false
 }
 
 onMounted(() => {
@@ -53,9 +54,9 @@ onMounted(() => {
 
 <template>
   <div class="container">
-    <Modal :is-open="isModalOpened" name="first-modal" @modal-close="closeModal">
+    <Modal :is-open="isModalOpened" :loader="true" :is-loaded="isPicLoaded" name="first-modal" @modal-close="closeModal">
       <template #content>
-        <Zoom :src="sliderActive" />
+        <Zoom :src="sliderActive" @full-loaded="(val) => isPicLoaded = val" />
       </template>
     </Modal>
     <div class="gallery" :class="{ 'dark-gallery': isDark }">
@@ -85,8 +86,8 @@ onMounted(() => {
         </div>
         <div ref="mySwiper2" :class="{ ok: _swiper2 }" class="swiper">
           <div class="swiper-wrapper">
-            <div v-for="(item, index) in gallery.items" :key="`slider1${index}`" class="swiper-slide" loading="lazy" @click="openModal(item.imgZoom)">
-              <img :src="item.img">
+            <div v-for="(item, index) in gallery.items" :key="`slider1${index}`" class="swiper-slide" @click="openModal(item.imgZoom)">
+              <img :src="item.img" loading="lazy">
               <div class="swiper-lazy-preloader" />
             </div>
           </div>
@@ -95,8 +96,8 @@ onMounted(() => {
 
       <div ref="mySwiper" thumbsSlider="" class="swiper">
         <div class="swiper-wrapper">
-          <div v-for="(item, index) in gallery.items" :key="`slider2${index}`" class="swiper-slide" loading="lazy">
-            <img :src="item.img">
+          <div v-for="(item, index) in gallery.items" :key="`slider2${index}`" class="swiper-slide">
+            <img :src="item.img" loading="lazy">
             <div class="swiper-lazy-preloader" />
           </div>
         </div>
@@ -106,6 +107,9 @@ onMounted(() => {
 </template>
 
 <style lang="sass">
+.swiper-lazy-preloader
+  border: 4px solid  $color-yellow
+  border-top-color: transparent
 .gallery
   padding: 50px 0 0 0
 

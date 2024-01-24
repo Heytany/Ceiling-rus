@@ -3,54 +3,81 @@ import { useZoomImageMove, useZoomImageWheel } from '@zoom-image/vue'
 
 const props = $defineProps({
   src: { type: String, required: true },
-  isOpen: { type: Boolean, required: true },
 })
 
-const isMounted = ref(false)
+const srcLoaded = ref (props.src)
 const {
   createZoomImage: createZoomImageWheel,
 } = useZoomImageWheel()
-const { createZoomImage: createZoomImageMove } = useZoomImageMove()
 
-const imageWheelContainerRef = ref<HTMLDivElement>()
-const imageMoveContainerRef = ref<HTMLDivElement>()
+const { createZoomImage: createZoomImageMove } = useZoomImageMove()
+const emit = defineEmit('fullLoaded')
+const imageContainerRef = ref<HTMLDivElement>()
+const imageRef = ref<HTMLImageElement>()
+
 const isDesktop = ref(deviceConditions.isDesktop || deviceConditions.isNotebook)
 
-onMounted(() => {
-  nextTick(() => {
-    isMounted.value = true
-  })
+onUnmounted(() => {
+  if (imageRef.value) {
+    imageRef.value.removeEventListener('load', setEmitOK)
+    imageRef.value.removeEventListener('error', setEmitErr)
+  }
 })
+
 watch(
   isDesktop,
   async (val: boolean) => {
-    if (isMounted) {
-      await nextTick()
+    await nextTick()
 
-      if (val) {
-        createZoomImageMove(imageMoveContainerRef.value as HTMLDivElement, {
-          zoomImageSource: props.src,
-        })
-      }
-      else if (!val) {
-        createZoomImageWheel(imageWheelContainerRef.value as HTMLDivElement)
-      }
+    if (val) {
+      createZoomImageMove(imageContainerRef.value as HTMLDivElement, {
+        zoomImageSource: props.src,
+      })
+    }
+    else {
+      createZoomImageWheel(imageContainerRef.value as HTMLDivElement)
     }
   },
   { immediate: true },
 )
+
+watch(
+  srcLoaded,
+  async () => {
+    await nextTick()
+    if (isDesktop)
+      loadImage(imageRef.value as HTMLImageElement)
+  },
+  { immediate: true },
+)
+
+function setEmitOK() {
+  setTimeout(() => {
+    emit(true)
+  }, 100)
+}
+
+function setEmitErr() {
+  setTimeout(() => {
+    emit(false)
+  }, 100)
+}
+
+function loadImage(elem: HTMLImageElement) {
+  if (elem) {
+    elem.addEventListener('load', setEmitOK)
+    elem.addEventListener('error', setEmitErr)
+  }
+  else {
+    setEmitOK()
+  }
+}
 </script>
 
 <template>
-  <div v-if="!isDesktop">
-    <div ref="imageWheelContainerRef" class="img-zoom-container cursor-crosshair duration-500">
-      <img class="h-full w-full" alt="Large Pic" :src="props.src">
-    </div>
-  </div>
-
-  <div v-if="isDesktop">
-    <div ref="imageMoveContainerRef" class="img-zoom-container relative cursor-crosshair overflow-hidden">
-      <img class="h-full w-full" alt="Large Pic" :src="props.src">
+  <div>
+    <div ref="imageContainerRef" class="img-zoom-container relative cursor-crosshair overflow-hidden">
+      <img ref="imageRef" loading="lazy" class="img-zoomed h-full w-full" :src="props.src">
     </div>
   </div>
 </template>
@@ -60,4 +87,11 @@ watch(
   max-width: 90vw
   max-height: calc(var(--vh, 1vh) * 90)
   width: 100%
+  background: transparent
+
+  .img-zoomed
+    object-fit: contain
+    max-height: inherit
+    max-width: inherit
+    background: transparent
 </style>

@@ -2,7 +2,9 @@
 const emit = defineEmit('modalClose')
 const isLocked = useScrollLock(document)
 const props = $defineProps({
-  isOpen: { type: Boolean, required: true },
+  isOpen: { type: Boolean },
+  loader: { type: Boolean },
+  isLoaded: { type: Boolean },
 })
 const target = ref(null)
 
@@ -14,10 +16,11 @@ watch(() => props.isOpen, (val: boolean) => {
 </script>
 
 <template>
-  <div v-if="props.isOpen" class="modal-mask" :class="{ 'dark-modal': isDark }">
+  <div v-if="props.isOpen" class="modal-mask" :class="[{ 'dark-modal': isDark }, { 'loader-modal': props.loader }]">
     <div class="modal-wrapper">
       <div ref="target" class="modal-container">
         <div class="modal-body">
+          <div v-if="props.loader && !props.isLoaded" class="swiper-lazy-preloader" />
           <slot name="content">
             Default content
           </slot>
@@ -27,7 +30,14 @@ watch(() => props.isOpen, (val: boolean) => {
   </div>
 </template>
 
-<style lang="sass" scoped>
+<style lang="sass">
+@keyframes swiper-preloader-spin-modal
+  from
+    transform: rotate(0deg)
+
+  to
+    transform: rotate(360deg)
+
 .modal-mask
   position: fixed
   z-index: 9998
@@ -39,6 +49,8 @@ watch(() => props.isOpen, (val: boolean) => {
   display: flex
   align-items: center
   justify-content: center
+  .swiper-lazy-preloader
+    animation: swiper-preloader-spin-modal 0.2s infinite linear
 .modal-container
   max-width: 90vw
   max-height: calc(var(--vh, 1vh) * 90)
@@ -54,4 +66,8 @@ watch(() => props.isOpen, (val: boolean) => {
   .modal-container
     background-color: $color-default
     color: $color-white
+
+.loader-modal.modal-mask
+  .modal-container
+    background: transparent
 </style>

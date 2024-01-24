@@ -24,31 +24,31 @@ const attendance = ref<any>(props.dataAttendance)
       </div>
       <div class="attendance-row">
         <div class="attendance-item">
-          <div i-fontisto-shopping-sale uno-icon />
+          <div uno-icon i-fontisto-shopping-sale />
           <div>
             Скидки 5-10%
           </div>
         </div>
         <div class="attendance-item">
-          <div i-jam-book uno-icon />
+          <div uno-icon i-jam-book />
           <div>
             Работа по договору
           </div>
         </div>
         <div class="attendance-item">
-          <div i-ph-shield-check uno-icon />
+          <div uno-icon i-ph-shield-check />
           <div>
             Гарантия качества
           </div>
         </div>
         <div class="attendance-item">
-          <div i-ph-briefcase-fill uno-icon />
+          <div uno-icon i-ph-briefcase-fill />
           <div>
             15 лет на рынке
           </div>
         </div>
         <div class="attendance-item">
-          <div i-ph-ruler uno-icon />
+          <div uno-icon i-ph-ruler />
           <div>
             Бесплатный замер
           </div>

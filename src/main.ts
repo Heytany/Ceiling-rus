@@ -4,6 +4,7 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 
+import 'swiper/css'
 import '@unocss/reset/tailwind.css'
 import './styles/main.sass'
 import 'uno.css'
