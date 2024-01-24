@@ -11,14 +11,17 @@ const props = $defineProps<{
 }>()
 const gallery = ref<any>(props.dataGallery)
 const isModalOpened = ref(false)
+const sliderActive= ref('')
 
-function openModal() {
+function openModal(val) {
+  sliderActive.value = val
   isModalOpened.value = true
 }
 
 function closeModal() {
   isModalOpened.value = false
 }
+
 
 onMounted(() => {
   swiper = new Swiper(mySwiper.value, {
@@ -51,20 +54,9 @@ onMounted(() => {
 
 <template>
   <div class="container">
-    <div>
-      <button @click="openModal">
-        Open generic modal
-      </button>
-    </div>
     <Modal :is-open="isModalOpened" name="first-modal" @modal-close="closeModal">
-      <template #header>
-        Custom header
-      </template>
       <template #content>
-        Custom content
-      </template>
-      <template #footer>
-        Custom content
+        <img class="popup-slider-zoom" :src="sliderActive">
       </template>
     </Modal>
     <div class="gallery" :class="{ 'dark-gallery': isDark }">
@@ -92,9 +84,9 @@ onMounted(() => {
             Другие работы →
           </button>
         </div>
-        <div ref="mySwiper2" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" :class="{ ok: _swiper2 }" class="swiper">
+        <div ref="mySwiper2" :class="{ ok: _swiper2 }" class="swiper">
           <div class="swiper-wrapper">
-            <div v-for="(item, index) in gallery.items" :key="`slider1${index}`" class="swiper-slide" loading="lazy">
+            <div v-for="(item, index) in gallery.items" @click="openModal(item)" :key="`slider1${index}`" class="swiper-slide" loading="lazy">
               <img :src="item">
               <div class="swiper-lazy-preloader" />
             </div>
@@ -115,6 +107,11 @@ onMounted(() => {
 </template>
 
 <style lang="sass">
+.popup-slider-zoom
+  max-width: 90vw
+  max-height: calc(var(--vh, 1vh) * 90)
+  width: 100%
+  
 .gallery
   padding: 50px 0 0 0
 

@@ -19,7 +19,7 @@ watch(() => props.isOpen, (val: boolean) => {
       <div ref="target" class="modal-container">
         <div class="modal-body">
           <slot name="content">
-            default content
+            Default content
           </slot>
         </div>
       </div>
