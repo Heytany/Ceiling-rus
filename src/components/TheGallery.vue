@@ -141,6 +141,7 @@ const gallery = ref<any>(props.dataGallery)
       max-width: 40%
 
   .swiper-slide
+    cursor: pointer
     display: flex
     justify-content: center
     align-items: center
