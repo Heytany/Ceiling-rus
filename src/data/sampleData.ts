@@ -26,6 +26,7 @@ declare global {
     banner: Banner
     about: About
     attendance: Attendance
+    gallery: Gallery
   }
 
   interface ImgContainer {
@@ -53,6 +54,14 @@ declare global {
   interface Attendance {
     title: string
     subtitle: string
+  }
+
+  interface Gallery {
+    title: string
+    subtitle: string
+    rowTitle: string
+    rowSubtitle: string
+    items: Array<string>
   }
 
   interface SampleData {
@@ -142,6 +151,24 @@ export default {
     attendance: {
       title: 'Услуги',
       subtitle: 'При заказе натяжного потолка по индивидуальному заказу <br> светильники в подарок!',
+    },
+    gallery: {
+      title: 'Наши работы',
+      subtitle: 'Натяжные потолки на любой вкус',
+      rowTitle: 'Светящееся полотно',
+      rowSubtitle: 'Натяжной потолок со святящимся полотном можно сделать как цельным, где свет исходит от всей потолочной поверхности, так и виде светящегося окна - за счет вставки полупрозрачной пленки в основной потолок',
+      items: [
+        'https://swiperjs.com/demos/images/nature-1.jpg',
+        'https://swiperjs.com/demos/images/nature-2.jpg',
+        'https://swiperjs.com/demos/images/nature-3.jpg',
+        'https://swiperjs.com/demos/images/nature-4.jpg',
+        'https://swiperjs.com/demos/images/nature-5.jpg',
+        'https://swiperjs.com/demos/images/nature-6.jpg',
+        'https://swiperjs.com/demos/images/nature-7.jpg',
+        'https://swiperjs.com/demos/images/nature-8.jpg',
+        'https://swiperjs.com/demos/images/nature-9.jpg',
+        'https://swiperjs.com/demos/images/nature-10.jpg',
+      ],
     },
   },
 }

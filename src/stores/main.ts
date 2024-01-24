@@ -4,6 +4,7 @@ export const useMainPageStore = defineStore('main-page', () => {
   const banner = ref(<Banner>{})
   const about = ref(<About>{})
   const attendance = ref(<Attendance>{})
+  const gallery = ref(<Gallery>{})
 
   function initMainPage(this: any, dataObj: MainPage) {
     for (const key in dataObj) {
@@ -17,5 +18,6 @@ export const useMainPageStore = defineStore('main-page', () => {
     banner,
     about,
     attendance,
+    gallery,
   }
 })

@@ -36,6 +36,12 @@ onMounted(() => {
     },
   })
 })
+
+const props = $defineProps<{
+  dataGallery: { type: Gallery, required: true }
+}>()
+
+const gallery = ref<any>(props.dataGallery)
 </script>
 
 <template>
@@ -43,20 +49,20 @@ onMounted(() => {
     <div class="gallery" :class="{ 'dark-gallery': isDark }">
       <div class="gallery-text">
         <h2 class="h1-c">
-          Наши работы
+          {{ gallery.title }}
         </h2>
         <p class="subtitle-c">
-          Натяжные потолки на любой вкус
+          {{ gallery.subtitle }}
         </p>
       </div>
       <div class="gallery-row">
         <div class="gallery-text inner">
           <h2 class="h2-c">
-            Светящееся полотно
+            {{ gallery.rowTitle }}
           </h2>
           <hr class="hr-c">
           <p class="subtitle-c">
-            Натяжной потолок со святящимся полотном можно сделать как цельным, где свет исходит от всей потолочной поверхности, так и виде светящегося окна - за счет вставки полупрозрачной пленки в основной потолок
+            {{ gallery.rowSubtitle }}
           </p>
           <button
             type="button"
@@ -67,35 +73,9 @@ onMounted(() => {
         </div>
         <div ref="mySwiper2" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" :class="{ ok: _swiper2 }" class="swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="https://swiperjs.com/demos/images/nature-1.jpg">
-            </div>
-            <div class="swiper-slide">
-              <img src="https://swiperjs.com/demos/images/nature-2.jpg">
-            </div>
-            <div class="swiper-slide">
-              <img src="https://swiperjs.com/demos/images/nature-3.jpg">
-            </div>
-            <div class="swiper-slide">
-              <img src="https://swiperjs.com/demos/images/nature-4.jpg">
-            </div>
-            <div class="swiper-slide">
-              <img src="https://swiperjs.com/demos/images/nature-5.jpg">
-            </div>
-            <div class="swiper-slide">
-              <img src="https://swiperjs.com/demos/images/nature-6.jpg">
-            </div>
-            <div class="swiper-slide">
-              <img src="https://swiperjs.com/demos/images/nature-7.jpg">
-            </div>
-            <div class="swiper-slide">
-              <img src="https://swiperjs.com/demos/images/nature-8.jpg">
-            </div>
-            <div class="swiper-slide">
-              <img src="https://swiperjs.com/demos/images/nature-9.jpg">
-            </div>
-            <div class="swiper-slide">
-              <img src="https://swiperjs.com/demos/images/nature-10.jpg">
+            <div v-for="(item, index) in gallery.items" :key="`slider1${index}`" class="swiper-slide" loading="lazy">
+              <img :src="item">
+              <div class="swiper-lazy-preloader" />
             </div>
           </div>
         </div>
@@ -103,35 +83,9 @@ onMounted(() => {
 
       <div ref="mySwiper" thumbsSlider="" class="swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-1.jpg">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-2.jpg">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-3.jpg">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-4.jpg">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-5.jpg">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-6.jpg">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-7.jpg">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-8.jpg">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-9.jpg">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-10.jpg">
+          <div v-for="(item, index) in gallery.items" :key="`slider2${index}`" class="swiper-slide" loading="lazy">
+            <img :src="item">
+            <div class="swiper-lazy-preloader" />
           </div>
         </div>
       </div>
@@ -186,56 +140,41 @@ onMounted(() => {
     @include mq-min('notebook')
       max-width: 40%
 
+  .swiper-slide
+    display: flex
+    justify-content: center
+    align-items: center
+    background-size: cover
+    background-position: center
+    img
+      display: block
+      width: 100%
+      height: 100%
+      max-height: 300px
+      object-fit: cover
+
+  .swiper
+    width: 100%
+    margin-left: auto
+    margin-right: auto
+
+  .mySwiper
+    height: 20%
+    box-sizing: border-box
+    padding: 10px 0
+
+    .swiper-slide
+      width: 25%
+      height: 100%
+      opacity: 0.4
+
+    .swiper-slide-thumb-active
+      opacity: 1
+
 .dark-gallery
   .gallery-text
     color: $color-white
 
   hr
     border-color: $color-white
-
-.swiper
-  width: 100%
-  height: 100%
-.swiper-slide
-  text-align: center
-  font-size: 18px
-  background: #fff
-  display: flex
-  justify-content: center
-  align-items: center
-.swiper-slide img
-  display: block
-  width: 100%
-  height: 100%
-  max-height: 300px
-  object-fit: cover
-body
-  background: #000
-  color: #000
-.swiper
-  width: 100%
-  margin-left: auto
-  margin-right: auto
-.swiper-slide
-  background-size: cover
-  background-position: center
-.mySwiper2
-  height: 80%
-  width: 100%
-
-.mySwiper
-  height: 20%
-  box-sizing: border-box
-  padding: 10px 0
-.mySwiper .swiper-slide
-  width: 25%
-  height: 100%
-  opacity: 0.4
-.mySwiper .swiper-slide-thumb-active
-  opacity: 1
-.swiper-slide img
-  display: block
-  width: 100%
-  height: 100%
-  object-fit: cover
 </style>

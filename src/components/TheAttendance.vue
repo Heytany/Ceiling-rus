@@ -78,6 +78,7 @@ const attendance = ref<any>(props.dataAttendance)
     flex-wrap: wrap
 
     @include mq-min('notebook')
+      align-items: start
       gap: 40px
       flex-wrap: nowrap
 
