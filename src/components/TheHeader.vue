@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const router = useRouter()
-const currentRoute = router.currentRoute.value.name
+const currentRoute = ref(router.currentRoute.value.name)
+const route = useRoute()
+const path = computed(() => route.path)
 const matches = ref(0)
 const isDesktop = ref(deviceConditions.isDesktop)
 const isNotebook = ref(deviceConditions.isNotebook)
@@ -19,8 +21,13 @@ watch(isBurgerOpen, async (val: boolean) => {
   isLocked.value = val
 })
 
+watch(path, async (val: string) => {
+  setActiveRoute(val)
+})
+
 onMounted(() => {
   document.addEventListener('scroll', doScroll)
+  setActiveRoute(currentRoute.value)
 })
 
 onUnmounted(() => {
@@ -33,12 +40,22 @@ function hideBurger(event: any): void {
     isBurgerOpen.value = false
 }
 
-switch (currentRoute) {
-  case '/':
-    matches.value = 1
-    break
-  default:
-    matches.value = 0
+function setActiveRoute(route: string) {
+  switch (route) {
+    case '/':
+      matches.value = 1
+      break
+    case '/about':
+      matches.value = 2
+      break
+    default:
+      matches.value = 0
+  }
+}
+
+function routerGoMobile(route: string) {
+  router.push(route)
+  isBurgerOpen.value = false
 }
 </script>
 
@@ -49,7 +66,7 @@ switch (currentRoute) {
         <img class="header-icon" src="/favicon.svg" alt="Логотип Ceiling.rus" @click="router.push(header.logoRoute)">
         <nav>
           <ul class="header-menu">
-            <li v-for="item in header.items" :key="`${item.id}menu`" :class="[{ active: matches === item.id }, { important: item.isImportant }]">
+            <li v-for="item in header.items" :key="`${item.id}menu`" :class="[{ active: matches === item.id }, { important: item.isImportant }]" @click="router.push(item.route)">
               {{ item.name }}
             </li>
           </ul>
@@ -80,7 +97,7 @@ switch (currentRoute) {
                 <div id="menu" @click="hideBurger($event)">
                   <div class="menu-content">
                     <ul>
-                      <li v-for="item in header.items" :key="`${item.id}menu`">
+                      <li v-for="item in header.items" :key="`${item.id}menu`" @click="routerGoMobile(item.route)">
                         {{ item.name }}
                       </li>
                     </ul>

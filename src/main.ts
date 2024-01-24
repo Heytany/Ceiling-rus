@@ -22,3 +22,4 @@ app.mount('#app')
 window.globalData = sampleData
 useMasterPageStore().initMasterPage(window.globalData.masterPage)
 useMainPageStore().initMainPage(window.globalData.mainPage)
+useAboutPageStore().initAboutPage(window.globalData.aboutPage)

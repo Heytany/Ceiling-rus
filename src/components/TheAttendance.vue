@@ -13,7 +13,7 @@ const attendance = ref<any>(props.dataAttendance)
         <h2 class="h1-c">
           {{ attendance.title }}
         </h2>
-        <p class="suntitle-c" v-html="attendance.subtitle" />
+        <p class="subtitle-c" v-html="attendance.subtitle" />
         <button
           v-if="attendance.isButton"
           type="button"

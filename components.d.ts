@@ -11,6 +11,7 @@ declare module 'vue' {
     Modal: typeof import('./src/components/Modal.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SiteBreadcrumbs: typeof import('./src/components/SiteBreadcrumbs.vue')['default']
     Test: typeof import('./src/components/Test.vue')['default']
     TheAbout: typeof import('./src/components/TheAbout.vue')['default']
     TheAttendance: typeof import('./src/components/TheAttendance.vue')['default']
@@ -20,6 +21,8 @@ declare module 'vue' {
     TheGallery: typeof import('./src/components/TheGallery.vue')['default']
     TheHeader: typeof import('./src/components/TheHeader.vue')['default']
     TheInput: typeof import('./src/components/TheInput.vue')['default']
+    TheSpacer: typeof import('./src/components/TheSpacer.vue')['default']
+    VBreadcrumbs: typeof import('./src/components/VBreadcrumbs.vue')['default']
     Zoom: typeof import('./src/components/Zoom.vue')['default']
   }
 }

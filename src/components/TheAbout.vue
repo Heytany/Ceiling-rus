@@ -3,6 +3,7 @@ const props = $defineProps<{
   dataAbout: { type: About, required: true }
 }>()
 
+const router = useRouter()
 const about = ref<any>(props.dataAbout)
 const isDesktop = ref(deviceConditions.isDesktop)
 const isNotebook = ref(deviceConditions.isNotebook)
@@ -24,13 +25,14 @@ const isNotebook = ref(deviceConditions.isNotebook)
           {{ about.title }}
         </h2>
         <hr class="hr-c">
-        <p class="suntitle-c">
+        <p class="subtitle-c">
           {{ about.subtitle }}
         </p>
         <button
           v-if="about.isButton"
           type="button"
           class="subtitle-c btn-secondary"
+          @click="router.push('/about')"
         >
           Подробнее →
         </button>
