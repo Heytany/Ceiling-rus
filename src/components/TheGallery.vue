@@ -3,11 +3,22 @@ import Swiper from 'swiper/bundle'
 import 'swiper/css'
 
 let swiper: any = null
-
 let _swiper2: any = null
-
 const mySwiper = ref<any>()
 const mySwiper2 = ref<any>()
+const props = $defineProps<{
+  dataGallery: { type: Gallery, required: true }
+}>()
+const gallery = ref<any>(props.dataGallery)
+const isModalOpened = ref(false)
+
+function openModal() {
+  isModalOpened.value = true
+}
+
+function closeModal() {
+  isModalOpened.value = false
+}
 
 onMounted(() => {
   swiper = new Swiper(mySwiper.value, {
@@ -36,16 +47,26 @@ onMounted(() => {
     },
   })
 })
-
-const props = $defineProps<{
-  dataGallery: { type: Gallery, required: true }
-}>()
-
-const gallery = ref<any>(props.dataGallery)
 </script>
 
 <template>
   <div class="container">
+    <div>
+      <button @click="openModal">
+        Open generic modal
+      </button>
+    </div>
+    <Modal :is-open="isModalOpened" name="first-modal" @modal-close="closeModal">
+      <template #header>
+        Custom header
+      </template>
+      <template #content>
+        Custom content
+      </template>
+      <template #footer>
+        Custom content
+      </template>
+    </Modal>
     <div class="gallery" :class="{ 'dark-gallery': isDark }">
       <div class="gallery-text">
         <h2 class="h1-c">
