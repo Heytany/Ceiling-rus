@@ -12,6 +12,7 @@ const isLocked = useScrollLock(document)
 isLocked.value = true
 isLocked.value = false
 const scroll = ref(0)
+const isModalOpened = ref(false)
 
 function doScroll() {
   scroll.value = scrollY
@@ -48,14 +49,28 @@ function setActiveRoute(route: string) {
     case '/about':
       matches.value = 2
       break
+    case '/catalog':
+      matches.value = 4
+      break
     default:
       matches.value = 0
   }
 }
 
-function routerGoMobile(route: string) {
-  router.push(route)
+function openModal() {
+  isModalOpened.value = true
   isBurgerOpen.value = false
+}
+
+function closeModal() {
+  isModalOpened.value = false
+}
+
+function setState(route = '', isModal = false) {
+  isBurgerOpen.value = false
+  if (isModal)
+    openModal()
+  else router.push(route)
 }
 </script>
 
@@ -66,7 +81,7 @@ function routerGoMobile(route: string) {
         <img class="header-icon" src="/favicon.svg" alt="Логотип Ceiling.rus" @click="router.push(header.logoRoute)">
         <nav>
           <ul class="header-menu">
-            <li v-for="item in header.items" :key="`${item.id}menu`" :class="[{ active: matches === item.id }, { important: item.isImportant }]" @click="router.push(item.route)">
+            <li v-for="item in header.items" :key="`${item.id}menu`" :class="[{ active: matches === item.id }, { important: item.isImportant }]" @click="setState(item.route, item.isImportant)">
               {{ item.name }}
             </li>
           </ul>
@@ -97,7 +112,7 @@ function routerGoMobile(route: string) {
                 <div id="menu" @click="hideBurger($event)">
                   <div class="menu-content">
                     <ul>
-                      <li v-for="item in header.items" :key="`${item.id}menu`" @click="routerGoMobile(item.route)">
+                      <li v-for="item in header.items" :key="`${item.id}menu`" @click="setState(item.route, item.isImportant)">
                         {{ item.name }}
                       </li>
                     </ul>
@@ -123,6 +138,11 @@ function routerGoMobile(route: string) {
       </div>
     </div>
   </header>
+  <Modal :is-open="isModalOpened" :loader="false" @modal-close="closeModal">
+    <template #content>
+      <TheCallForm />
+    </template>
+  </Modal>
 </template>
 
 <style lang="sass">

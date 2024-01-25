@@ -7,7 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    copy: typeof import('./src/components/TheSpacer copy.vue')['default']
+    copy: typeof import('./src/components/TheCallForm.vue')['default']
     Modal: typeof import('./src/components/Modal.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
@@ -16,6 +16,7 @@ declare module 'vue' {
     TheAbout: typeof import('./src/components/TheAbout.vue')['default']
     TheAttendance: typeof import('./src/components/TheAttendance.vue')['default']
     TheBanner: typeof import('./src/components/TheBanner.vue')['default']
+    TheCallForm: typeof import('./src/components/TheCallForm.vue')['default']
     TheCounter: typeof import('./src/components/TheCounter.vue')['default']
     TheFooter: typeof import('./src/components/TheFooter.vue')['default']
     TheGallery: typeof import('./src/components/TheGallery.vue')['default']

@@ -89,7 +89,7 @@ watch(
 
 <template>
   <div class="container">
-    <Modal :is-open="isModalOpened" :loader="true" :is-loaded="isPicLoaded" name="first-modal" @modal-close="closeModal">
+    <Modal :is-open="isModalOpened" :loader="true" :is-loaded="isPicLoaded" @modal-close="closeModal">
       <template #content>
         <Zoom :src="sliderActive" @full-loaded="(val) => isPicLoaded = val" />
       </template>

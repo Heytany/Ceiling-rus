@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
 import { createPinia } from 'pinia'
+import VueTheMask from 'vue-the-mask'
+
 import App from './App.vue'
 
 import 'swiper/css'
@@ -17,6 +19,8 @@ const router = createRouter({
 })
 app.use(router)
 app.use(pinia)
+// @ts-expect-error: Bad port to TS
+app.use(VueTheMask)
 app.mount('#app')
 //  MVP version without backend here
 window.globalData = sampleData
