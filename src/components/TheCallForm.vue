@@ -139,7 +139,7 @@ async function submit() {
     display: flex
     flex-direction: column
     position: relative
-    margin: 10px 0
+    margin: 14px 0
     width: 100%
     @include mq-min('notebook')
       margin: 20px 0
@@ -181,14 +181,11 @@ async function submit() {
     padding: 10px 20px
 
   textarea:focus + label,
-  textarea:not(:placeholder-shown) + label
-    transform: translateY(-26px)
-    color: $color-yellow
-
+  textarea:not(:placeholder-shown) + label,
   input:focus + label,
   input:not(:placeholder-shown) + label
-    transform: translateY(-36px)
-    color: $color-yellow
+    transform: translateY(-26px)
+    opacity: 0
   .error
     width: 100%
     max-width: 320px
@@ -196,7 +193,7 @@ async function submit() {
     font-size: 12px
     font-style: normal
     color: #e3073c
-    margin-top: -6px
+    margin-top: -4px
     margin-bottom: 8px
     @include mq-min('notebook')
       margin-top: -12px
