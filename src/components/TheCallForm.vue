@@ -145,7 +145,7 @@ async function submit() {
       margin: 20px 0
   input, textarea
     width: 100%
-    width: 320px
+    width: 65vw
     border: none
     background-color: #ffffff
     border: 1px solid $color-default
@@ -154,8 +154,10 @@ async function submit() {
     padding: 10px 15px
     color: $color-default
     font-size: 14px
-    @include mq-min('notebook')
+
+    @include mq-min('phone')
       font-size: 16px
+      width: 320px
 
   textarea
     outline: 0
