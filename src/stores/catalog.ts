@@ -11,13 +11,8 @@ export const useCatalogPageStore = defineStore('catalog-page', { state: () => {
     }
   }
 
-  function updateCatalog(data: any) {
-    catalog.value = data
-  }
-
   return {
     initCatalogPage,
-    updateCatalog,
     banner,
     spacer,
     catalog,

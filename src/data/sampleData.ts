@@ -74,12 +74,12 @@ declare global {
   }
 
   interface Gallery {
-    index?: number
-    title?: string
-    subtitle?: string
-    rowTitle?: string
-    rowSubtitle?: string
-    items?: Array<SliderItem>
+    index: number
+    title: string
+    subtitle: string
+    rowTitle: string
+    rowSubtitle: string
+    items: Array<SliderItem>
   }
 
   interface SampleData {

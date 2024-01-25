@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
+
 defineOptions({
   name: 'Catalog',
 })
 
 const catalogStore = useCatalogPageStore()
-const catalogGetter = computed(() => catalogStore.catalog)
+const { catalog } = storeToRefs(catalogStore)
 </script>
 
 <template>
@@ -16,8 +18,9 @@ const catalogGetter = computed(() => catalogStore.catalog)
     <div class="container">
       <TheBanner :data-banner="catalogStore.banner" />
     </div>
-    <div class="catalog-page-items-wrapper">
-      <TheGallery v-for="(item, index) in catalogGetter" :key="`gal${String(item.index)}`" :is-catalog="true" :inverted="Boolean(Number(index) % 2 === 0)" :data-gallery="item" />
+    <div v-if="catalog.length" class="catalog-page-items-wrapper">
+      <!-- @vue-skip -->
+      <TheGallery v-for="(item, index) in catalog" :key="`gal${String(item.index)}`" :is-catalog="true" :inverted="Boolean(Number(index) % 2 === 0)" :data-gallery="item" />
     </div>
     <ThePagination />
   </div>
