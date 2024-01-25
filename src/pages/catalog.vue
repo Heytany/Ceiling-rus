@@ -3,21 +3,23 @@ defineOptions({
   name: 'Catalog',
 })
 
-const catalog = useCatalogPageStore()
+const catalogStore = useCatalogPageStore()
+const catalogGetter = computed(() => catalogStore.catalog)
 </script>
 
 <template>
   <div class="index-page catalog-page" :class="{ 'catalog-about-page': isDark }">
-    <TheSpacer :data-spacer="catalog.spacer" />
+    <TheSpacer :data-spacer="catalogStore.spacer" />
     <div class="breadcrumbs container">
       <SiteBreadcrumbs />
     </div>
     <div class="container">
-      <TheBanner :data-banner="catalog.banner" />
+      <TheBanner :data-banner="catalogStore.banner" />
     </div>
     <div class="catalog-page-items-wrapper">
-      <TheGallery v-for="(item, index) in catalog.catalog" :key="`gal${String(index)}`" :is-catalog="true" :inverted="Boolean(Number(index) % 2 === 0)" :data-gallery="item" />
+      <TheGallery v-for="(item, index) in catalogGetter" :key="`gal${String(item.index)}`" :is-catalog="true" :inverted="Boolean(Number(index) % 2 === 0)" :data-gallery="item" />
     </div>
+    <ThePagination />
   </div>
 </template>
 

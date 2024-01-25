@@ -7,7 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    copy: typeof import('./src/components/TheAbout copy.vue')['default']
+    copy: typeof import('./src/components/TheSpacer copy.vue')['default']
     Modal: typeof import('./src/components/Modal.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
@@ -21,6 +21,7 @@ declare module 'vue' {
     TheGallery: typeof import('./src/components/TheGallery.vue')['default']
     TheHeader: typeof import('./src/components/TheHeader.vue')['default']
     TheInput: typeof import('./src/components/TheInput.vue')['default']
+    ThePagination: typeof import('./src/components/ThePagination.vue')['default']
     TheSpacer: typeof import('./src/components/TheSpacer.vue')['default']
     VBreadcrumbs: typeof import('./src/components/VBreadcrumbs.vue')['default']
     Zoom: typeof import('./src/components/Zoom.vue')['default']

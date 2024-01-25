@@ -41,8 +41,8 @@ declare global {
   }
 
   interface CatalogPage {
-    banner: Banner
-    spacer: ImgContainer
+    banner?: Banner
+    spacer?: ImgContainer
     catalog: Array<Gallery>
   }
 
@@ -74,11 +74,12 @@ declare global {
   }
 
   interface Gallery {
-    title: string
-    subtitle: string
-    rowTitle: string
-    rowSubtitle: string
-    items: Array<SliderItem>
+    index?: number
+    title?: string
+    subtitle?: string
+    rowTitle?: string
+    rowSubtitle?: string
+    items?: Array<SliderItem>
   }
 
   interface SampleData {
@@ -172,6 +173,7 @@ export default {
       subtitle: 'При заказе натяжного потолка по индивидуальному заказу <br> светильники в подарок!',
     },
     gallery: {
+      index: 0,
       title: 'Наши работы',
       subtitle: 'Натяжные потолки на любой вкус',
       rowTitle: 'Светящееся полотно',
@@ -263,6 +265,7 @@ export default {
     },
     catalog: [
       {
+        index: 0,
         title: '',
         subtitle: '',
         rowTitle: 'Светящееся полотно',
@@ -303,6 +306,7 @@ export default {
         ],
       },
       {
+        index: 1,
         title: '',
         subtitle: '',
         rowTitle: 'Светящееся полотно',
@@ -343,6 +347,7 @@ export default {
         ],
       },
       {
+        index: 2,
         title: '',
         subtitle: '',
         rowTitle: 'Светящееся полотно',

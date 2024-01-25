@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useCatalogPageStore = defineStore('catalog-page', () => {
+export const useCatalogPageStore = defineStore('catalog-page', { state: () => {
   const banner = ref(<Banner>{})
   const spacer = ref(<ImgContainer>{})
   const catalog = ref(Array<Gallery>)
@@ -11,10 +11,15 @@ export const useCatalogPageStore = defineStore('catalog-page', () => {
     }
   }
 
+  function updateCatalog(data: any) {
+    catalog.value = data
+  }
+
   return {
     initCatalogPage,
+    updateCatalog,
     banner,
     spacer,
     catalog,
   }
-})
+} })

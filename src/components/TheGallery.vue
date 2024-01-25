@@ -14,8 +14,7 @@ const props = $defineProps<{
 const gallery = ref<any>(props.dataGallery)
 const isCatalog = ref<any>(props.isCatalog)
 const isInverted = ref<any>(props.inverted)
-const target = ref(null)
-const targetIsVisible = useElementVisibility(target)
+const targetIsVisible = useElementVisibility(swiperMain)
 
 const isModalOpened = ref(false)
 const sliderActive = ref('')
@@ -89,7 +88,7 @@ watch(
 </script>
 
 <template>
-  <div ref="target" class="container">
+  <div class="container">
     <Modal :is-open="isModalOpened" :loader="true" :is-loaded="isPicLoaded" name="first-modal" @modal-close="closeModal">
       <template #content>
         <Zoom :src="sliderActive" @full-loaded="(val) => isPicLoaded = val" />
