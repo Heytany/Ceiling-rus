@@ -173,10 +173,14 @@ function routerGoMobile(route: string) {
       justify-content: center
       gap: 35px
 
+      li:not(.important)
+        text-shadow: 1px 1px 1.5px $color-white
+
       .active:not(.important), li:not(.important):hover, li:not(.important):active
         cursor: pointer
         padding-bottom: 1px
         border-bottom: 1px solid $color-default
+        text-shadow: none
 
       .important
         cursor: pointer
@@ -307,8 +311,11 @@ function routerGoMobile(route: string) {
 
 .dark-header
   .header-menu
+    li:not(.important)
+      text-shadow: 1px 1px 1.5px $color-default
     .active:not(.important), li:not(.important):hover, li:not(.important):active
         border-bottom-color: $color-white
+        text-shadow: none
 
   .burger
     #menuToggle

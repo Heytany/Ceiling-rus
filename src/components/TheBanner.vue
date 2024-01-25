@@ -7,14 +7,14 @@ const banner = ref<any>(props.dataBanner)
 </script>
 
 <template>
-  <div class="banner" :class="{ 'dark-banner': isDark }">
+  <div class="banner" :class="[{ 'dark-banner': isDark }, { 'banner-rounded': !banner.isText }]">
     <picture>
       <source :srcset="banner.img.srcMobileOpt" type="image/webp" media="(max-width: 1365px)">
       <source :srcset="banner.img.srcMobile" media="(max-width: 1365px)">
       <source :srcset="banner.img.srcOpt" type="image/webp">
-      <img :src="banner.img.src" alt="photo">
+      <img :src="banner.img.src" loading="lazy" alt="photo">
     </picture>
-    <div class="banner-container container">
+    <div v-if="banner.isText" class="banner-container container">
       <div class="banner-text">
         <h1 class="h1-c">
           {{ banner.title }}
@@ -37,14 +37,20 @@ const banner = ref<any>(props.dataBanner)
 <style lang="sass">
 .banner
   position: relative
+  overflow: hidden
 
   img
     min-height: 420px
     object-fit: cover
+    width: 100%
 
     @include mq('tablet')
       max-height: 700px
       width: 100%
+
+    @include mq('notebook')
+    max-height: unset
+
   &-container
     position: absolute
     left: 0
@@ -77,4 +83,7 @@ const banner = ref<any>(props.dataBanner)
     background: $color-default
     hr
       border-color: $color-white
+
+.banner-rounded
+  border-radius: 18px
 </style>

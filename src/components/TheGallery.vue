@@ -3,8 +3,8 @@ import Swiper from 'swiper/bundle'
 
 let swiper: any = null
 let _swiper2: any = null
-const mySwiper = ref<any>()
-const mySwiper2 = ref<any>()
+const swiperSub = ref<any>()
+const swiperMain = ref<any>()
 const props = $defineProps<{
   dataGallery: { type: Gallery, required: true }
 }>()
@@ -24,7 +24,7 @@ function closeModal() {
 }
 
 onMounted(() => {
-  swiper = new Swiper(mySwiper.value, {
+  swiper = new Swiper(swiperSub.value, {
     loop: true,
     spaceBetween: 10,
     slidesPerView: 4,
@@ -39,7 +39,7 @@ onMounted(() => {
       },
     },
   })
-  _swiper2 = new Swiper(mySwiper2.value, {
+  _swiper2 = new Swiper(swiperMain.value, {
     loop: true,
     spaceBetween: 0,
     autoplay: {
@@ -84,7 +84,7 @@ onMounted(() => {
             Другие работы →
           </button>
         </div>
-        <div ref="mySwiper2" :class="{ ok: _swiper2 }" class="swiper">
+        <div ref="swiperMain" :class="{ ok: _swiper2 }" class="swiper swiper-main">
           <div class="swiper-wrapper">
             <div v-for="(item, index) in gallery.items" :key="`slider1${index}`" class="swiper-slide" @click="openModal(item.imgZoom)">
               <img :src="item.img" loading="lazy">
@@ -94,7 +94,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <div ref="mySwiper" thumbsSlider="" class="swiper">
+      <div ref="swiperSub" thumbsSlider="" class="swiper swiper-mini">
         <div class="swiper-wrapper">
           <div v-for="(item, index) in gallery.items" :key="`slider2${index}`" class="swiper-slide">
             <img :src="item.img" loading="lazy">
@@ -163,11 +163,15 @@ onMounted(() => {
     align-items: center
     background-size: cover
     background-position: center
+    position: relative
+    padding-bottom: 75%
     img
+      position: absolute
       display: block
-      width: 100%
-      height: 100%
-      max-height: 300px
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
       object-fit: cover
 
   .swiper
@@ -175,7 +179,7 @@ onMounted(() => {
     margin-left: auto
     margin-right: auto
 
-  .mySwiper
+  .swiper-mini
     height: 20%
     box-sizing: border-box
     padding: 10px 0
@@ -184,7 +188,7 @@ onMounted(() => {
       width: 25%
       height: 100%
       opacity: 0.4
-
+      padding-bottom: 16%
     .swiper-slide-thumb-active
       opacity: 1
 

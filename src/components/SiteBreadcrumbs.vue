@@ -7,6 +7,10 @@ function calculatePaths(path: string) {
   switch (path) {
     case 'about':
       return 'О компании'
+      break
+    case 'catalog':
+      return 'Наши работы'
+      break
     default:
       return 'Главная'
   }
