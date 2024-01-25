@@ -15,6 +15,9 @@ const catalog = useCatalogPageStore()
     <div class="container">
       <TheBanner :data-banner="catalog.banner" />
     </div>
+    <div class="catalog-page-items-wrapper">
+      <TheGallery v-for="(item, index) in catalog.catalog" :key="`gal${String(index)}`" :is-catalog="true" :inverted="Boolean(Number(index) % 2 === 0)" :data-gallery="item" />
+    </div>
   </div>
 </template>
 
