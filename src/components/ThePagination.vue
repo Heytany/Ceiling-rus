@@ -90,7 +90,7 @@ watch(
       </button>
       <button
         v-for="item in pageCount" :key="item"
-        class="pagination-btn subtitle-c"
+        class="subtitle-c pagination-btn"
         :class="{ active: page === item }"
         @click="() => goToPage(item)"
       >

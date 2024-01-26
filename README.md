@@ -24,7 +24,11 @@
 
 - 📦 [Components auto importing](./src/components)
 
-- 🎨 [UnoCSS](https://github.com/antfu/unocss) - The instant on-demand atomic CSS engine.
+- 🎨 [SASS](https://sass-lang.com/) - The most mature, stable, and powerful professional grade CSS extension language in the world.
+
+- 🤖 [UnoCSS](https://github.com/antfu/unocss) - The instant on-demand atomic CSS engine.
+
+- 👾 [Vuelidate](https://vuelidate-next.netlify.app/) - simple, but powerful, lightweight model-based validation for Vue.js.
 
 - 😃 Use icons from any icon sets in [Pure CSS](https://github.com/antfu/unocss/tree/main/packages/preset-icons)
 
