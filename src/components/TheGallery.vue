@@ -7,11 +7,13 @@ let _swiperThums: any = null
 const swiperSub = ref<any>()
 const swiperMain = ref<any>()
 const props = $defineProps<{
-  dataGallery: { type: Gallery, required: true }
+  dataGallery: Gallery
   isCatalog: boolean
   inverted: boolean
 }>()
-const gallery = ref<any>(props.dataGallery)
+const gallery = computed(() => {
+  return props.dataGallery
+})
 const isCatalog = ref<any>(props.isCatalog)
 const isInverted = ref<any>(props.inverted)
 const targetIsVisible = useElementVisibility(swiperMain)

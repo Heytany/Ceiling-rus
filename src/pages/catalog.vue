@@ -19,8 +19,7 @@ const { catalog } = storeToRefs(catalogStore)
       <TheBanner :data-banner="catalogStore.banner" />
     </div>
     <div v-if="catalog.length" class="catalog-page-items-wrapper">
-      <!-- @vue-skip -->
-      <TheGallery v-for="(item, index) in catalog" :key="`gal${String(item.index)}`" :is-catalog="true" :inverted="Boolean(Number(index) % 2 === 0)" :data-gallery="item" />
+      <TheGallery v-for="(item, index) in catalog" :key="`gal${String(index)}`" :is-catalog="true" :inverted="Boolean(Number(index) % 2 === 0)" :data-gallery="item" />
     </div>
     <ThePagination />
   </div>
